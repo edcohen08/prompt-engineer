@@ -1,7 +1,7 @@
 import streamlit as st
 
 from langchain.chains import LLMChain, SequentialChain
-from langchain.llms import OpenAI
+from langchain.llms import OpenAI, PromptLayerOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.prompts.few_shot import FewShotPromptTemplate
 from pandas import DataFrame
@@ -25,7 +25,7 @@ def load_zero_shot_chain():
         input_variables=["prompt_candidate", "input"],
         template=template
     )
-    llm = OpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    llm = PromptLayerOpenAI(model_name="gpt-3.5-turbo", temperature=0)
     return LLMChain(llm=llm, prompt=prompt, output_key="ai_answer")
 
 @st.cache_resource

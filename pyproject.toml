@@ -15,10 +15,13 @@ langchain = "^0.0.151"
 openai = "^0.27.5"
 streamlit = "^1.22.0"
 pandas = "^2.0.1"
-
+promptlayer = "^0.1.80"
 
 [tool.poetry.group.dev.dependencies]
 watchdog = "^3.0.0"
+
+[tool.poetry.scripts]
+run-streamlit = "./run.sh"
 
 [build-system]
 requires = ["poetry-core"]

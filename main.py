@@ -4,6 +4,8 @@ st.set_page_config(page_title="AI Prompt Engineer", page_icon="🦫", layout="wi
 
 from models import call_zero_shot_pipeline, convert_df
 
+df = None
+
 if 'prompt_count' not in st.session_state:
     st.session_state.prompt_count = 0
 
@@ -34,17 +36,16 @@ with st.form("prompt_test"):
             st.text_area(f"Answer {i + 1}", help="no help", key=f"answer_{i}", placeholder=f"answer {i+1}", label_visibility="collapsed")
 
     if st.form_submit_button():
-        global df
         df = call_zero_shot_pipeline(dict(st.session_state))
         st.dataframe(df)
 
-
-st.download_button(
-    label="Download data as CSV",
-    data=convert_df(df),
-    file_name='results.csv',
-    mime='text/csv',
-)
+if df is not None:
+    st.download_button(
+        label="Download data as CSV",
+        data=convert_df(df),
+        file_name='results.csv',
+        mime='text/csv',
+    )
 
 with col_1:
     if st.button('Add', type="primary", key="add_prompt"):

@@ -1186,6 +1186,22 @@ docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
+name = "promptlayer"
+version = "0.1.80"
+description = "PromptLayer is a package to keep track of your GPT models training"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "promptlayer-0.1.80.tar.gz", hash = "sha256:1012018ed3e4bca4f0d9c9164cb00b7ca0936cba6a40d4de53e87ef08fdff62f"},
+]
+
+[package.dependencies]
+langchain = "*"
+openai = "*"
+requests = "*"
+
+[[package]]
 name = "protobuf"
 version = "3.20.3"
 description = "Protocol Buffers"
@@ -2117,4 +2133,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "5e5d41402b3a6a9f1f98d04169636a48bd1294448c1cd67380b842281aad4d65"
+content-hash = "6a523029e4b441abb25aaa00cde20c080c79fedc27ef354d5fb582b280ecf38f"
