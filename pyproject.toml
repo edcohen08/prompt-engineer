@@ -14,6 +14,7 @@ tiktoken = "^0.3.3"
 langchain = "^0.0.151"
 openai = "^0.27.5"
 streamlit = "^1.22.0"
+pandas = "^2.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
