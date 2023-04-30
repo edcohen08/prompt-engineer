@@ -17,7 +17,7 @@ class PromptLayerSequentialChain(SequentialChain):
             known_values.update(outputs)
         outputs = {k: known_values[k] for k in self.output_variables}
         if return_pl_ids:
-            outputs.update({"pl_ids": known_values["pl_ids"]})
+            outputs.update({"pl_id": known_values["pl_id"]})
 
         self.return_pl_ids = return_pl_ids
         return outputs
@@ -25,7 +25,7 @@ class PromptLayerSequentialChain(SequentialChain):
     def _validate_outputs(self, outputs: Dict[str, str]) -> None:
         output_keys_set = set(self.output_keys)
         if self.return_pl_ids:
-            output_keys_set.add("pl_ids")
+            output_keys_set.add("pl_id")
         
         if set(outputs) != output_keys_set:
             raise ValueError(
@@ -50,7 +50,7 @@ class PromptLayerLLMChain(LLMChain):
     def prep_outputs(self, inputs: Dict[str, str], outputs: Dict[str, str], return_only_outputs: bool = False) -> Dict[str, str]:
         outputs = super().prep_outputs(inputs, outputs, return_only_outputs)
         if getattr(self.llm, "return_pl_id", False):
-            outputs.update({"pl_ids": self.pl_ids})
+            outputs.update({"pl_id": self.pl_ids[0]["pl_id"]})
 
         return outputs
 
