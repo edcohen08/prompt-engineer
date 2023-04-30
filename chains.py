@@ -36,12 +36,7 @@ class PromptLayerLLMChain(LLMChain):
     pl_ids = Optional[List[Dict[str, str]]]
 
     def create_outputs(self, response: LLMResult) -> List[Dict[str, str]]:
-        """Create outputs from response."""
-        outputs = [
-            # Get the text of the top generated string.
-            {self.output_key: generation[0].text}
-            for generation in response.generations
-        ]
+        outputs = super().create_outputs(response)
         if getattr(self.llm, "return_pl_id", False):
             self.pl_ids = [{"pl_id": generation[0].generation_info["pl_request_id"]} for generation in response.generations]
         
