@@ -1,6 +1,5 @@
-from langchain.prompts import PromptTemplate
+from re import match
 from pandas import DataFrame
-from promptlayer.prompts.prompts import publish_prompt
 from promptlayer import track
 
 
@@ -12,5 +11,5 @@ def track_prompt_run(prompt_run):
                 prompt_name="test-zero-shot-date-1",
                 prompt_input_variables={"input": prompt_run["input"]})
     track.score(request_id=str(prompt_run["pl_id"]),
-                score=int(prompt_run["score"]))
+                score=int(match("\d+", prompt_run["score"])[0]))
     

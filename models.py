@@ -2,10 +2,9 @@ from threading import Thread
 
 import streamlit as st
 
-from langchain.chains import LLMChain, SequentialChain
-from langchain.llms import OpenAI, PromptLayerOpenAI, PromptLayerOpenAIChat
+from langchain.chains import LLMChain
+from langchain.llms import OpenAI, PromptLayerOpenAIChat
 from langchain.prompts import PromptTemplate
-from langchain.prompts.few_shot import FewShotPromptTemplate
 from pandas import DataFrame
 
 from chains import PromptLayerLLMChain, PromptLayerSequentialChain
@@ -40,13 +39,11 @@ def load_zero_shot_pipeline():
         output_variables=["ai_answer", "score"]
     )
 
-# @st.cache_data
 def call_zero_shot_pipeline(state: dict) -> DataFrame:
     zero_shot_pipeline = load_zero_shot_pipeline()
     results = []
     for i in range(state["prompt_count"] + 1):
         for j in range(state["demonstration_count"] + 1):
-            # output = load_zero_shot_chain()({"prompt_candidate": state[f"prompt_{i}"], "input": state[f"question_{j}"], })
             output = zero_shot_pipeline({"prompt_candidate": state[f"prompt_{i}"], "input": state[f"question_{j}"], "answer": state[f"answer_{j}"]})
             results.append(output)
     df = DataFrame(results)
@@ -54,7 +51,6 @@ def call_zero_shot_pipeline(state: dict) -> DataFrame:
     thread.start()
     return df 
 
-# @st.cache_data
 def convert_df(df: DataFrame) -> str:
     return df.to_csv().encode("utf-8")
 
