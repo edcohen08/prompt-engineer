@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "ai prompt engineer"
 authors = ["Eddie Cohen <eddiehcohen@gmail.com>"]
 readme = "README.md"
-packages = [{include = "prompt_engineer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
