@@ -27,7 +27,7 @@ def load_zero_shot_chain():
         input_variables=["prompt_candidate", "input"],
         template=template
     )
-    llm = PromptLayerOpenAIChat(model_name="gpt-3.5-turbo", temperature=0, return_pl_id=True)
+    llm = PromptLayerOpenAIChat(openai_api_key=st.session_state["openai_api_key"], promptlayer_api_key=st.session_state["promptlayer_api_key"], model_name="gpt-3.5-turbo", temperature=0, return_pl_id=True)
     return PromptLayerLLMChain(llm=llm, prompt=prompt, output_key="ai_answer")
 
 def load_zero_shot_pipeline():
