@@ -47,6 +47,7 @@ def call_zero_shot_pipeline(state: dict) -> DataFrame:
     for i in range(state["prompt_count"] + 1):
         for j in range(state["demonstration_count"] + 1):
             output = zero_shot_pipeline({"prompt_candidate": state[f"prompt_{i}"], "input": state[f"question_{j}"], "answer": state[f"answer_{j}"]})
+            output.update({"prompt_template_name": state[f"prompt_name_{i}"]})
             results.append(output)
     df = DataFrame(results)
     thread = Thread(target=write_to_prompt_layer(df))
