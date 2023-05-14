@@ -83,7 +83,7 @@ with st.form("prompt_test"):
 
 if df is not None:
     st.download_button(
-        label="Download data as CSV",
+        label="Download results as csv",
         data=convert_df(df),
         file_name="results.csv",
         mime="text/csv",
