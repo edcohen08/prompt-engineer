@@ -17,7 +17,7 @@ class PromptLayerSequentialChain(SequentialChain):
             known_values.update(outputs)
         outputs = {k: known_values[k] for k in self.output_variables}
         if return_pl_ids:
-            outputs.update({"pl_id": known_values["pl_id"]})
+            outputs.update({"pl_id": str(known_values["pl_id"])})
 
         self.return_pl_ids = return_pl_ids
         return outputs
