@@ -19,6 +19,7 @@ class PromptLayerSequentialChain(SequentialChain):
             outputs.update({"pl_id": str(known_values["pl_id"])})
 
         self.return_pl_ids = return_pl_ids
+
         return outputs
 
     def _validate_outputs(self, outputs: Dict[str, str]) -> None:
