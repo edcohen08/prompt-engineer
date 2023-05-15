@@ -54,7 +54,7 @@ with tab3:
         text and provide it as the output*
         - *Identify the date or day mentioned in the given event description*
     3. Add Q/A pairs. E.g.,
-        - Mother's day brunch on 5/15. 5/15
+        - Mother's day brunch on 5/14. 5/14
         - Succession finale two sundays from now. two sundays from now
     4. Run it
     5. If you've used it before and already have prompts published on
