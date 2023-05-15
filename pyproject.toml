@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "prompt-engineer"
-version = "0.1.0"
+version = "0.2.0"
 description = "ai prompt engineer"
 authors = ["Eddie Cohen <eddiehcohen@gmail.com>"]
 readme = "README.md"
@@ -18,9 +18,6 @@ promptlayer = "^0.1.80"
 
 [tool.poetry.group.dev.dependencies]
 watchdog = "^3.0.0"
-
-[tool.poetry.scripts]
-run-streamlit = "./run.sh"
 
 [build-system]
 requires = ["poetry-core"]
